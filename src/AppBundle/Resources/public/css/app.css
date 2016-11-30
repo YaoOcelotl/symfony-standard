@@ -1,0 +1,10 @@
+@CHARSET "UTF-8";
+.form_compound{
+	padding: 0.25rem 1.0rem;
+	
+}
+
+.form_collection.form_compound > .form-group{
+	border: 1px solid;
+    border-radius: 1rem;
+}

@@ -1,0 +1,6 @@
+services:
+    app.form.type.validated_object:
+        class: AppBundle\Form\Type\ValidatedObjectType
+        arguments: ["@doctrine"]
+        tags:
+            - { name: form.type, alias: validated_object }

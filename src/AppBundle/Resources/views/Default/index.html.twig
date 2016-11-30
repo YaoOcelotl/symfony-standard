@@ -1,0 +1,72 @@
+{% extends 'AppBundle:Default:layout.html.twig' %}
+
+
+{% block body %}
+	<div class="table-responsive">
+    	<table class="table table-striped table-bordered table-hover">
+    		<thead>
+    			<tr>
+    				<th>
+    					Parent id
+    				</th>
+    				<th>
+    					Object id
+    				</th>
+    				<th>
+    					Property1
+    				</th>
+    				<th>
+    					Property2
+    				</th>
+    				<th>
+    					<div class="btn-toolbar" role="toolbar" aria-label="...">
+                          <div class="btn-group" role="group" aria-label="...">
+                          	<a class="btn btn-default" href="{{ path('add') }}" role="button">
+                          		<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                          	</a>
+                          </div>
+                        </div>
+    				</th>
+    			</tr>
+    		</thead>
+    		<tbody>
+        	{% for data in objects %}
+            	<tr>
+    				<td>
+    					{{ (data.parentObject is null) ? '' : data.parentObject.id }}
+    				</td>
+    				<td>
+    					{{ data.id }}
+    				</td>
+    				<td>
+    					{{ data.property1 }}
+    				</td>
+    				<td>
+    					{{ data.property2 }}
+    				</td>
+    				<td>
+    					{% if data.parentObject is null %}
+    					<div class="btn-toolbar" role="toolbar" aria-label="...">
+                          <div class="btn-group" role="group" aria-label="...">
+                          	<a class="btn btn-default" href="{{ path('edit',{'id': data.id }) }}" role="button">
+                          		<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                          	</a>
+                          </div>
+                        </div>
+                        {% endif %}
+    				</td>
+    			</tr>		
+        		
+        	{% else %}
+        		<tr>
+        			<td colspan="5">
+                		<div class="alert alert-info" role="alert">
+                			Empty list
+                		</div>
+            		</td>
+            	</tr>
+        	{% endfor %}
+			</tbody>
+		</table>
+	</div>
+{% endblock body %}
